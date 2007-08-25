@@ -2,7 +2,7 @@
 Summary:		Top-like monitor for network traffic
 Name:			nethogs
 Version:		0.6.1
-Release:		%mkrel 0.cvs20050321.6
+Release:		%mkrel 0.cvs20050321.7
 Source:			http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.bz2
 URL:			http://nethogs.sourceforge.net
 Group:			Monitoring

@@ -7,6 +7,7 @@ Source:			http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.
 URL:			http://nethogs.sourceforge.net
 Group:			Monitoring
 License:		GPL
+BuildRoot:		%{_tmppath}/build-%{_name}-%{_version}
 BuildRequires:          ncurses-devel
 BuildRequires:          libpcap-devel
 

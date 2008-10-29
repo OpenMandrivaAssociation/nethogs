@@ -1,15 +1,15 @@
-
-Summary:		Top-like monitor for network traffic
-Name:			nethogs
-Version:		0.6.1
-Release:		%mkrel 0.cvs20050321.8
-Source:			http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.bz2
-URL:			http://nethogs.sourceforge.net
-Group:			Monitoring
-License:		GPL
+Summary:	Top-like monitor for network traffic
+Name:		nethogs
+Version:	0.6.1
+Release:	%mkrel 0.cvs20050321.8
+Group:		Monitoring
+License:	GPL
+URL:		http://nethogs.sourceforge.net
+Source0:	http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.bz2
+Patch0:		nethogs-gcc43.diff
+BuildRequires:	ncurses-devel
+BuildRequires:	pcap-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:          ncurses-devel
-BuildRequires:          libpcap-devel
 
 %description
 NetHogs is a small "net top" tool.
@@ -28,27 +28,28 @@ Features:
 - supports both Ethernet and PPP
 
 %prep
-%setup -q -n "nethogs"
+
+%setup -q -n nethogs
+%patch0 -p1
 
 %build
-%make
+
+%make CFLAGS="%{optflags}"
 
 %install
-%{__rm} -rf "${RPM_BUILD_ROOT}"
+rm -rf %{buildroot}
 
-%{__mkdir_p} "${RPM_BUILD_ROOT}%{_sbindir}"
-%{__install} -m 0755 -s nethogs "${RPM_BUILD_ROOT}%{_sbindir}/"
+install -d %{buildroot}%{_sbindir}
+install -m0755 nethogs %{buildroot}%{_sbindir}/
 
-%{__mkdir_p} "${RPM_BUILD_ROOT}%{_mandir}/man8"
-%{__install} -m 0644 nethogs.8 "${RPM_BUILD_ROOT}%{_mandir}/man8/"
+install -d %{buildroot}%{_mandir}/man8
+install -m0644 nethogs.8 %{buildroot}%{_mandir}/man8/
 
 %clean
-%{__rm} -rf "${RPM_BUILD_ROOT}"
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
 %doc Changelog DESIGN README
 %{_sbindir}/nethogs
 %{_mandir}/man*/*
-
-

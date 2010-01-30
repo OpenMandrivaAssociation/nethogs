@@ -1,12 +1,11 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.6.1
-Release:	%mkrel 0.cvs20050321.9
+Version:	0.7.0
+Release:	%mkrel 1
 Group:		Monitoring
-License:	GPL
+License:	GPL+
 URL:		http://nethogs.sourceforge.net
-Source0:	http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.bz2
-Patch0:		nethogs-gcc43.diff
+Source0:	http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.gz
 BuildRequires:	ncurses-devel
 BuildRequires:	pcap-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -30,7 +29,6 @@ Features:
 %prep
 
 %setup -q -n nethogs
-%patch0 -p1
 
 %build
 

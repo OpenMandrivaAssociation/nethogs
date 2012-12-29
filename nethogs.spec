@@ -1,14 +1,13 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.7.0
-Release:	%mkrel 2
+Version:	0.8.0
+Release:	1
 Group:		Monitoring
 License:	GPL+
 URL:		http://nethogs.sourceforge.net
-Source0:	http://osdn.dl.sourceforge.net/sourceforge/nethogs/%{name}-%{version}.tar.gz
+Source0:	https://sourceforge.net/projects/nethogs/files/nethogs/0.8/%{name}-%{version}.tar.gz
 BuildRequires:	ncurses-devel
 BuildRequires:	pcap-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 NetHogs is a small "net top" tool.
@@ -35,16 +34,11 @@ Features:
 %make CFLAGS="%{optflags}"
 
 %install
-rm -rf %{buildroot}
-
 install -d %{buildroot}%{_sbindir}
 install -m0755 nethogs %{buildroot}%{_sbindir}/
 
 install -d %{buildroot}%{_mandir}/man8
 install -m0644 nethogs.8 %{buildroot}%{_mandir}/man8/
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -95,10 +89,10 @@ Import nethogs
 * Tue May 09 2006 Gaetan Lehmann <gaetan.lehmann@jouy.inra.fr> 0.6.1-0.cvs20050321.5mdk
 - fix readline BuildRequires
 
-* Tue Apr 18 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.4mdk
+* Tue Apr 18 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.4mdk
 - Fix BuildRequires
 
-* Thu Jul 28 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.3mdk
+* Thu Jul 28 2005 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.3mdk
 - Fix BuildRequires
 
 * Wed Jul 13 2005 Oden Eriksson <oeriksson@mandriva.com> 0.6.1-0.cvs20050321.2mdk
@@ -112,4 +106,5 @@ Import nethogs
 
 * Sat Jun 12 2004 Pascal Bleser <guru@unixtech.be>
 - new package
+
 

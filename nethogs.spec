@@ -1,7 +1,7 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
 Version:	0.8.0
-Release:	1
+Release:	2
 Group:		Monitoring
 License:	GPL+
 URL:		http://nethogs.sourceforge.net

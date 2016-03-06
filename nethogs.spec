@@ -1,11 +1,11 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.0
-Release:	1
+Version:	0.8.1
+Release:	2
 Group:		Monitoring
 License:	GPL+
-URL:		http://nethogs.sourceforge.net
-Source0:	https://sourceforge.net/projects/nethogs/files/nethogs/0.8/%{name}-%{version}.tar.gz
+URL:		https://github.com/raboof/nethogs
+Source0:	https://github.com/raboof/nethogs/archive/v%{version}.tar.gz
 BuildRequires:	ncurses-devel
 BuildRequires:	pcap-devel
 
@@ -27,11 +27,10 @@ Features:
 
 %prep
 
-%setup -q -n nethogs
-
+%setup -q
 %build
 
-%make CFLAGS="%{optflags}"
+%make CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" CC=%{__cc} CXX=%{__cxx}
 
 %install
 install -d %{buildroot}%{_sbindir}
@@ -42,69 +41,6 @@ install -m0644 nethogs.8 %{buildroot}%{_mandir}/man8/
 
 %files
 %defattr(-,root,root)
-%doc Changelog DESIGN README
+%doc Changelog DESIGN
 %{_sbindir}/nethogs
 %{_mandir}/man*/*
-
-
-%changelog
-* Mon Dec 06 2010 Oden Eriksson <oeriksson@mandriva.com> 0.7.0-2mdv2011.0
-+ Revision: 613034
-- the mass rebuild of 2010.1 packages
-
-* Sat Jan 30 2010 Jérôme Brenier <incubusss@mandriva.org> 0.7.0-1mdv2010.1
-+ Revision: 498609
-- new version 0.7.0
-- drop gcc43 patch
-- fix License tag
-
-* Mon Sep 14 2009 Thierry Vignaud <tv@mandriva.org> 0.6.1-0.cvs20050321.9mdv2010.0
-+ Revision: 440317
-- rebuild
-
-* Wed Oct 29 2008 Oden Eriksson <oeriksson@mandriva.com> 0.6.1-0.cvs20050321.8mdv2009.1
-+ Revision: 298623
-- fix build
-- rebuilt against libpcap-1.0.0
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-* Sat Aug 25 2007 Gaëtan Lehmann <glehmann@mandriva.org> 0.6.1-0.cvs20050321.7mdv2008.0
-+ Revision: 71332
-- rebuild
-
-
-* Wed Aug 09 2006 glehmann
-+ 08/09/06 20:00:20 (55100)
-rebuild
-
-* Sun Jul 30 2006 glehmann
-+ 07/30/06 10:26:06 (42698)
-Import nethogs
-
-* Tue May 09 2006 Gaetan Lehmann <gaetan.lehmann@jouy.inra.fr> 0.6.1-0.cvs20050321.5mdk
-- fix readline BuildRequires
-
-* Tue Apr 18 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.4mdk
-- Fix BuildRequires
-
-* Thu Jul 28 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.6.1-0.cvs20050321.3mdk
-- Fix BuildRequires
-
-* Wed Jul 13 2005 Oden Eriksson <oeriksson@mandriva.com> 0.6.1-0.cvs20050321.2mdk
-- rebuilt against new libpcap-0.9.1 (aka. a "play safe" rebuild)
-
-* Mon Mar 21 2005 Gaetan Lehmann <gaetan.lehmann@jouy.inra.fr> 0.6.1-0.cvs20050321.1mdk
-- mandrake contrib
-
-* Fri Sep 17 2004 Pascal Bleser <guru@unixtech.be>
-- version 0.6.0
-
-* Sat Jun 12 2004 Pascal Bleser <guru@unixtech.be>
-- new package
-
-

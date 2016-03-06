@@ -1,4 +1,2 @@
-removed_sources:
-  nethogs-0.7.0.tar.gz: aa51f6064ffe1a3ddae351e87b5087ff92857269
 sources:
-  nethogs-0.8.0.tar.gz: 5c06a99efd2ac1d3e155ac63334f8d69589122ab
+  v0.8.1.tar.gz: f768eca5567657de36de8b1b73eedeb5f093cc8c

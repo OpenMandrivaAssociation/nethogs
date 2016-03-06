@@ -1,11 +1,15 @@
+%define snapdate 20160306
+
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.1
-Release:	2
+Version:	0.8.2
+Release:	2.%{snapdate}.1
 Group:		Monitoring
 License:	GPL+
 URL:		https://github.com/raboof/nethogs
-Source0:	https://github.com/raboof/nethogs/archive/v%{version}.tar.gz
+# git clone https://github.com/raboof/nethogs.git
+# git archive --format=tar --prefix nethogs-0.8.2-$(date +%Y%m%d)/ HEAD | xz -vf > nethogs-0.8.2-$(date +%Y%m%d).tar.xz
+Source0:	nethogs-%{version}-%{snapdate}.tar.xz
 BuildRequires:	ncurses-devel
 BuildRequires:	pcap-devel
 
@@ -27,7 +31,7 @@ Features:
 
 %prep
 
-%setup -q
+%setup -qn %{name}-%{version}-%{snapdate}
 %build
 
 %make CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" CC=%{__cc} CXX=%{__cxx}

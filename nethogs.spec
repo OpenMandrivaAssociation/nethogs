@@ -1,15 +1,13 @@
-%define snapdate 20160306
-
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.2
-Release:	2.%{snapdate}.1
+Version:	0.8.5
+Release:	1
 Group:		Monitoring
 License:	GPL+
 URL:		https://github.com/raboof/nethogs
 # git clone https://github.com/raboof/nethogs.git
 # git archive --format=tar --prefix nethogs-0.8.2-$(date +%Y%m%d)/ HEAD | xz -vf > nethogs-0.8.2-$(date +%Y%m%d).tar.xz
-Source0:	nethogs-%{version}-%{snapdate}.tar.xz
+Source0:	https://github.com/raboof/nethogs/archive/v%{version}.tar.gz
 BuildRequires:	ncurses-devel
 BuildRequires:	pcap-devel
 
@@ -31,20 +29,19 @@ Features:
 
 %prep
 
-%setup -qn %{name}-%{version}-%{snapdate}
+%setup -q
 %build
 
 %make CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" CC=%{__cc} CXX=%{__cxx}
 
 %install
 install -d %{buildroot}%{_sbindir}
-install -m0755 nethogs %{buildroot}%{_sbindir}/
+install -m0755 src/nethogs %{buildroot}%{_sbindir}/
 
 install -d %{buildroot}%{_mandir}/man8
-install -m0644 nethogs.8 %{buildroot}%{_mandir}/man8/
+install -m0644 doc/nethogs.8 %{buildroot}%{_mandir}/man8/
 
 %files
-%defattr(-,root,root)
 %doc Changelog DESIGN
 %{_sbindir}/nethogs
 %{_mandir}/man*/*

@@ -1,6 +1,6 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.5
+Version:	0.8.6
 Release:	1
 Group:		Monitoring
 License:	GPL+
@@ -42,6 +42,6 @@ install -d %{buildroot}%{_mandir}/man8
 install -m0644 doc/nethogs.8 %{buildroot}%{_mandir}/man8/
 
 %files
-%doc Changelog DESIGN
+%doc DESIGN
 %{_sbindir}/nethogs
 %{_mandir}/man*/*

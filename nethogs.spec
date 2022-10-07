@@ -1,6 +1,6 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.6
+Version:	0.8.7
 Release:	1
 Group:		Monitoring
 License:	GPL+

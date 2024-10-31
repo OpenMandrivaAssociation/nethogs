@@ -1,7 +1,7 @@
 Summary:	Top-like monitor for network traffic
 Name:		nethogs
-Version:	0.8.7
-Release:	2
+Version:	0.8.8
+Release:	1
 Group:		Monitoring
 License:	GPL+
 URL:		https://github.com/raboof/nethogs
